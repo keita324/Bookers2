@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    @book_comment = BookComment.new
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
@@ -27,6 +28,7 @@ class BooksController < ApplicationController
     @newbook = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
+    @book_comment = BookComment.new
   end
 
   def destroy
